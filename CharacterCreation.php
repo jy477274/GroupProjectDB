@@ -10,6 +10,15 @@
     <form>
       <fieldset>
 
+        <label>Character Creation</label>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="CharName">Character Name</span>
+          </div>
+          <input type="text" class="form-control">
+        </div><br>
+
         <!-- Character Type -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -23,6 +32,36 @@
             <option value="Rogue">Rogue</option>
           </select><br>
         </div>
+
+        <!-- Weapon -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="Weapon">Weapon</label>
+          </div>
+          <select class="custom-select" id="Weapon">
+            <option selected>Choose...</option>
+            <option value="Sword">Sword</option>
+            <option value="Bow">Bow</option>
+            <option value="Staff">Staff</option>
+            <option value="Knives">Knives</option>
+          </select><br>
+        </div>
+
+        <!-- Armour -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="Armour">Armour</label>
+          </div>
+          <select class="custom-select" id="Armour">
+            <option selected>Choose...</option>
+            <option value="Chain Mail">Chain Mail</option>
+            <option value="Robe">Robe</option>
+            <option value="Leather">Leather</option>
+            <option value="Cloak">Cloak</option>
+          </select><br>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
 
       </fieldset>
     </form>
