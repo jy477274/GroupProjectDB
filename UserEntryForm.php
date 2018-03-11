@@ -1,3 +1,36 @@
+<?php
+  //create connection to MySQL database **CHANGE**
+  $conn = mysqli_connect('bluenose.cs.dal.ca', 'jayden', 'B00736511', 'jayden');
+
+  //check connection
+  if(mysqli_connect_errno()){
+    //connection failed
+    echo 'Failed to connect to MySQL '. mysqli_connect_errno();
+  }
+
+  //check for Submit
+  $n = 100;
+  if(isset($_POST['submit'])){
+    //get form database
+    $FName = mysqli_real_escape_string($conn, $_POST['First Name']);
+    $LName = mysqli_real_escape_string($conn, $_POST['Last Name']);
+    $Username = mysqli_real_escape_string($conn, $_POST['Username']);
+    $Password = mysqli_real_escape_string($conn, $_POST['Password']);
+    $Email = mysqli_real_escape_string($conn, $_POST['Email']);
+    $ClanSelect = $_POST['ClanSelect'];
+
+    $query = "INSERT INTO UserInfo(UserInfo_ID, UserInfo_FName, UserInfo_LName, UserInfo_Username, UserInfo_Pass, UserInfo_Email, Clan_ID)
+    VALUES ($n++, '$FName', '$LName', '$Username', '$Password', '$Email', $ClanSelect)";
+
+    if(mysqli_query($conn, $query)){
+      header('Location: '.'http://localhost/PHP/CharacterCreation.php'.'');
+    }
+    else {
+      echo 'ERROR: '.mysqli_error($conn);
+    }
+  }
+ ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,7 +40,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <form>
+    <form method="POST" action="UserEntryForm.php">
       <fieldset>
         <!-- First Name -->
        <label>User Information</label>
@@ -16,7 +49,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="First Name">First Name</span>
           </div>
-          <input type="text" class="form-control">
+          <input type="text" name="First Name" class="form-control">
         </div><br>
 
       <!-- Last Name -->
@@ -24,7 +57,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="Last Name">Last Name</span>
         </div>
-        <input type="text" class="form-control">
+        <input type="text" name="Last Name" class="form-control">
       </div><br>
 
       <!-- Username -->
@@ -32,7 +65,15 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="Username">Username</span>
         </div>
-        <input type="text" class="form-control">
+        <input type="text" name"Username" class="form-control">
+      </div><br>
+
+      <!-- Password -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="Password">Password</span>
+        </div>
+        <input type="text" name"Password" class="form-control">
       </div><br>
 
       <!-- Email -->
@@ -40,7 +81,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="Email">Email</span>
         </div>
-        <input type="text" class="form-control">
+        <input type="text" name="Email" class="form-control">
       </div><br>
 
       <!-- Clan Input -->
@@ -48,13 +89,14 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="ClanSelect">Clan</label>
         </div>
-        <select class="custom-select" id="ClanSelect">
-          <option selected>Choose...</option>
-          <option value="Ziza">Ziza</option>
-          <option value="MLG">MLG</option>
-          <option value="42069360NS">42069360NS</option>
-          <option value="H@v0cc">H@v0cc</option>
-          <option value="Shakira">Shakira ( ͡° ͜ʖ ͡°)</option>
+
+        <select class="custom-select" name="ClanSelect" id="ClanSelect">
+          <option selected value = null>Choose...</option>
+          <option value=1>Ziza</option>
+          <option value=2>MLG</option>
+          <option value=3>42069360NS</option>
+          <option value=4>H@v0cc</option>
+          <option value=5>Shakira ( ͡° ͜ʖ ͡°)</option>
         </select>
       </div><br>
 
