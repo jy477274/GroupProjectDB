@@ -1,6 +1,6 @@
 <?php
   //create connection to MySQL database **CHANGE**
-  $conn = mysqli_connect('localhost', 'root', 'Ryanwilbur1', 'csgamez');
+  $conn = mysqli_connect('bluenose.cs.dal.ca', 'jayden', 'B00736511', 'jayden');
 
   //check connection
   if(mysqli_connect_errno()){
