@@ -3,6 +3,7 @@ CREATE DATABASE IF NOT EXISTS csGamez;
 use csGamez;
 
 #drop database csGamez;
+#create database csGamez;
 
 CREATE TABLE IF NOT EXISTS Weapon (
 	Weapon_ID INT NOT NULL PRIMARY KEY,
@@ -52,9 +53,9 @@ CREATE TABLE IF NOT EXISTS UserInfo (
 
 CREATE TABLE IF NOT EXISTS UserCharacter (
 	UserCharacter_ID INT PRIMARY KEY,
+    UserCharacter_Name VARCHAR(255) NOT NULL,
     Stats_ID INT,
     CharType_ID INT,
-    Stat_ID INT,
     FOREIGN KEY(Stats_ID) REFERENCES Stats(Stats_ID),
     FOREIGN KEY(CharType_ID) REFERENCES CharType(CharType_ID)
 );
@@ -108,7 +109,7 @@ INSERT INTO Weapon VALUES(2,'Bow',5);
 INSERT INTO Weapon VALUES(3,'Staff',8);
 INSERT INTO Weapon VALUES(4,'Knife(s)',3);
 
-INSERT INTO Armour VALUES(1,'Chainmail','Bow',22);
+INSERT INTO Armour VALUES(1,'Chain Mail','Bow',22);
 INSERT INTO Armour VALUES(2,'Robes','Sword',13);
 INSERT INTO Armour VALUES(3,'Leather','Knife(s)',10);
 INSERT INTO Armour VALUES(4,'Cloak','Staff',5);
