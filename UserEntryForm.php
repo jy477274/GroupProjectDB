@@ -40,7 +40,43 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body{
+            fron 15px/1.5 Arial, Helvetica,sans-serif;
+            padding: 0;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header{
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+
+        footer{
+            position:absolute;
+            bottom: 0;
+            width: 100%;
+            hight:60px;
+            padding:20px;
+            margin-top: 20px;
+            color: #ffffff;
+            background-color:#e8491d;
+            text-align: center;
+        }
+
+    </style>
     <body>
+        <header>
+            <div class="container">
+                    <div id="branding">
+                            <h1>DalCS Gamez</h1>
+
+                    </div>
+            </div>
+        </header>
     <form method="POST" action="UserEntryForm.php">
       <fieldset>
         <!-- First Name -->
@@ -112,5 +148,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <footer>
+        <p>Made with love by Jayden Macdonald, Ryan Wilbur, Dorukhan Calışkan, and Dylan Roberts</p>
+    </footer>
   </body>
 </html>
