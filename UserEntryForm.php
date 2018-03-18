@@ -7,7 +7,7 @@ include("backButton.php")
 
 
 <?php
-// $conn = mysqli_connect('bluenose.cs.dal.ca', 'jayden', 'B00736511', 'jayden');
+
   //create connection to MySQL database **CHANGE**
   include 'testsql/pdo.php';
   $pdo = new PDO($dsn, $user, $pass, $opt);
