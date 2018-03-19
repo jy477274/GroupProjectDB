@@ -7,9 +7,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <head/>
     <style>
         header{
             background:  #3b5998;
+            color: #ffffff;
             padding-left: 0px;
             padding-bottom: 30px;
             min-height: 70px;
@@ -37,25 +39,46 @@
             border-top:  #8b9dc3 3px solid;
             text-align: center;
         }
-    </style>
-    <header>
-        <div class="container">
-                <div id="branding">
-                        <h1>DalCS Gamez
-                        <form method="POST" action="index.php">
-                            <fieldset>
-                                <button type="submit" class="btn btn-primary">Back</button>
-                            </fieldset>
-                        </form>
-                        </h1>
+        .container{
+            padding-top: 20px;
+        }
+        h1{
+            margin: 0 auto;
+            text-align: left;
+            text-align: start;
+            padding-bottom: 20px;
+        }
+        h2{
+            padding-top: 70px
+        }
 
-                </div>
-        </div>
-    </header>
+    </style>
+
+    <body>
+        <header>
+            <div class="container">
+                    <div id="branding">
+                            <h1>DalCS Gamez</h1>
+
+                            <form method="POST" action="index.php">
+                                <fieldset>
+                                    <button type="submit" class="btn btn-primary">Back</button>
+                                </fieldset>
+                            </form>
+
+
+                    </div>
+            </div>
+        </header>
+
+        <section id="filename">
+            <div class="contatiner">
+                <h2>Character Creation</h2>
+            </div>
+        </section>
     <form>
       <fieldset>
 
-        <label>Character Creation</label>
 
         <div class="input-group">
           <div class="input-group-prepend">
