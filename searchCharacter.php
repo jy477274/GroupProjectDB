@@ -1,4 +1,3 @@
-
 <?php
 
   //create connection to MySQL database **CHANGE**
@@ -102,7 +101,7 @@
         </header>
         <section id="filename">
             <div class="contatiner">
-                <h2>User Search</h2>
+                <h2>Character Search</h2>
             </div>
         </section>
     <form method="POST" action="UserEntryForm.php">
@@ -117,10 +116,10 @@
 
         <select class="custom-select" name="SearchOption" id="SearchOption">
           <option selected value = null>Choose...</option>
-          <option value=FirstName>First Name</option>
-          <option value=LastName>Last Name</option>
-          <option value=Username>Username</option>
-          <option value=Clan>Clan</option>
+          <option value=characterName>Character Name</option>
+          <option value=LastName>Character Type</option>
+          <option value=Weapon>Weapon</option>
+          <option value=Armour>Armour</option>
         </select>
       </div><br>
 
