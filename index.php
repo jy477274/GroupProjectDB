@@ -2,8 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-		<h1>csgamez database</h1>
-		<p>What would you like to do?</p>
+
     <!-- Required meta tags -->
 
     <meta charset="utf-8">
@@ -12,7 +11,72 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <style>
+        header{
+
+            background:  #3b5998;
+            color: #ffffff;
+            padding-left: 0px;
+            padding-bottom: 30px;
+            min-height: 70px;
+            border-bottom: #8b9dc3 3px soli
+            width; 100%;
+            text-align: left;
+        }
+        body{
+            front 15px/1.5 Arial, Helvetica,sans-serif;
+            padding-top: 0px;
+            padding-left: 0px;
+
+            background-color: #dfe3ee;
+
+        }
+        footer{
+            position:absolute;
+            bottom: 0;
+            width: 100%;
+            hight:60px;
+            padding:20px;
+            margin-top: 20px;
+            color: #ffffff;
+            background-color:#3b5998;
+            border-top:  #8b9dc3 3px solid;
+            text-align: center;
+        }
+        .container{
+            padding-top: 20px;
+        }
+        h1{
+            margin: 0 auto;
+            text-align: left;
+            text-align: start;
+            padding-bottom: 20px;
+        }
+        h2{
+            padding-top: 70px;
+        }
+
+    </style>
+
 		<body>
+            <header>
+                <div class="container">
+                        <div id="branding">
+                                <h1>DalCS Gamez Database</h1>
+                                <form method="POST" action="index.php">
+                                    <fieldset>
+                                        <button type="submit" class="btn btn-primary">Back</button>
+                                    </fieldset>
+                                </form>
+
+                        </div>
+                </div>
+            </header>
+            <section id="filename">
+                <div class="contatiner">
+                    <h2>What Would You Like To Do?</h2>
+                </div>
+            </section>
 
 		<!-- Create new user button -->
 		<form method="POST" action="UserEntryForm.php">
@@ -24,7 +88,7 @@
 		<p></p>
 
 		<!-- Lookup user button -->
-		<form method="POST" action="FILE THAT WILL SEARCH FOR USER.php">
+		<form method="POST" action="searchUser.php">
       <fieldset>
       <button type="submit" class="btn btn-primary">Search User</button>
       </fieldset>
@@ -33,7 +97,7 @@
 		<p></p>
 
 		<!-- Lookup user button -->
-		<form method="POST" action="CharacterEntryForm.php">
+		<form method="POST" action="CharacterCreation.php">
       <fieldset>
       <button type="submit" class="btn btn-primary">Create New Character</button>
       </fieldset>
@@ -42,7 +106,7 @@
 		<p></p>
 
 		<!-- Lookup user button -->
-		<form method="POST" action="FILE THAT WILL SEARCH FOR CHARACTER.php">
+		<form method="POST" action="SearchCharacter.php">
       <fieldset>
       <button type="submit" class="btn btn-primary">Search Character</button>
       </fieldset>
@@ -56,4 +120,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
+  <footer>
+      <p>Made with love by Jayden Macdonald, Ryan Wilbur, Dorukhan Calışkan, and Dylan Roberts</p>
+  </footer>
 </html>

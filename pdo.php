@@ -1,13 +1,13 @@
 <?php
 
 
-$host = 'localhost';
+$host = "local instance MySQL Router";
 
 	$db = 'csgamez';
 
 	$user = 'root';
 
-	$pass = 'Ryanwilbur1';
+	$pass = 'MyNewPass';
 
 	$charset = 'utf8mb4';
 
