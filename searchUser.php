@@ -8,6 +8,8 @@ include("backButton.php")
 <?php
 
   //create connection to MySQL database **CHANGE**
+  //include 'testsql/pdo.php';
+  //$pdo = new PDO($dsn, $user, $pass, $opt);
 
 
   //check connection
