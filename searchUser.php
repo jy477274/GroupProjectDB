@@ -1,9 +1,15 @@
+<?php
+include("backButton.php")
+
+?>
+
+
 
 <?php
 
   //create connection to MySQL database **CHANGE**
-  //include 'testsql/pdo.php';
-//  $pdo = new PDO($dsn, $user, $pass, $opt);
+  include 'testsql/pdo.php';
+  $pdo = new PDO($dsn, $user, $pass, $opt);
 
 
   //check connection
@@ -86,6 +92,17 @@
             }
         }
     </style>
+
+  <head>
+    <!-- Required meta tags -->
+    <h1>Search User</h1>
+    <br>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <body>
         <header>
             <div class="container">
@@ -108,19 +125,13 @@
     <form method="POST" action="UserEntryForm.php">
       <fieldset>
 
-
       <!-- Clan Input -->
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="SearchOption">Search By</label>
         </div>
 
-        <select class="custom-select" name="SearchOption" id="SearchOption">
           <option selected value = null>Choose...</option>
-          <option value=FirstName>First Name</option>
-          <option value=LastName>Last Name</option>
-          <option value=Username>Username</option>
-          <option value=Clan>Clan</option>
         </select>
       </div><br>
 
@@ -144,18 +155,13 @@
     </form>
     <?php
     if (isset($_POST['Search'])){
-      $SearchBy = $_POST['SearchOption'];
       $Input =$_POST['Input'];
 
 
 
 
-      echo "Created : $FName,$LName,$Username,$Password,$Email,$ClanSelect";
 
-      $query = "call csgamez.createNewUser('$FName','$LName','$Username','$Password','$Email','$ClanSelect');";
-      $sth = $pdo->prepare($query);
 
-      $sth->execute();
     }
     ?>
 
