@@ -3,15 +3,8 @@
 
   //create connection to MySQL database **CHANGE**
   //include 'testsql/pdo.php';
-<<<<<<< HEAD
-<<<<<<< HEAD
-//  $pdo = new PDO($dsn, $user, $pass, $opt);
-=======
+
   //$pdo = new PDO($dsn, $user, $pass, $opt);
->>>>>>> 6f51c1a279f717d1e4b229f913b137698828f21f
-=======
-  //$pdo = new PDO($dsn, $user, $pass, $opt);
->>>>>>> 6f51c1a279f717d1e4b229f913b137698828f21f
 
 
   //check connection
