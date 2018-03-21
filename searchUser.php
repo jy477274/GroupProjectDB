@@ -3,8 +3,7 @@
 
   //create connection to MySQL database **CHANGE**
   //include 'testsql/pdo.php';
-
-  //$pdo = new PDO($dsn, $user, $pass, $opt);
+//  $pdo = new PDO($dsn, $user, $pass, $opt);
 
 
   //check connection
@@ -116,7 +115,7 @@
           <label class="input-group-text" for="SearchOption">Search By</label>
         </div>
 
-        <select class="custom-select" name="SearchOption" id="SearchOption">
+        <select class="custom-select" name="SearchOption" id="SearchOption" onchange="funOption()">
           <option selected value = null>Choose...</option>
           <option value=FirstName>First Name</option>
           <option value=LastName>Last Name</option>
@@ -133,6 +132,22 @@
         <input type="text" name="Input" class="form-control">
       </div><br>
 
+      <!--Clan Options -->
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="SearchOption">Clan Name</label>
+          </div>
+        <select class="custom-select" name="ClanSelect" id="ClanSelect">
+          <option selected value = null>Choose...</option>
+          <option value=Ziza>Ziza</option>
+          <option value=MLG>MLG</option>
+          <option value=42069360NS>42069360NS</option>
+          <option value=H@v0cc>H@v0cc</option>
+          <option value=Shakira>Shakira ( ͡° ͜ʖ ͡°)</option>
+        </select>
+      </div><br>
+
+
 
 
 
@@ -145,20 +160,71 @@
     </form>
     <?php
     if (isset($_POST['Search'])){
-      $SearchBy = $_POST['SearchOption'];
+      $value = $_POST['SearchOption'];
       $Input =$_POST['Input'];
+      $Clanname =$_POST['ClanSelect'];
 
+      if ($value == "FirstName") {
+        $query = "call csgamez.searchUserByFirstName('$Input');";
+        $sth = $pdo->prepare($query);
+        $sth->execute();
+      }
+      elseif ($value == "LastName") {
+        $query = "call csgamez.searchUserByLastName('$Input');";
+        $sth = $pdo->prepare($query);
+        $sth->execute();
+      }
+      elseif ($value == "Username") {
+        $query = "call csgamez.searchUserByUsername('$Input');";
+        $sth = $pdo->prepare($query);
+        $sth->execute();
+      }
+      else{
+        $query = "call csgamez.searchUsersByClan('$Clanname');";
 
+        mysqli_query($pdo,$query);
 
+        echo "<table border='1'>
+        <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        </tr>";
 
-      echo "Created : $FName,$LName,$Username,$Password,$Email,$ClanSelect";
+        while($row = mysqli_fetch_array($query))
+        {
+        echo "<tr>";
+        echo "<td>" . $row['FirstName'] . "</td>";
+        echo "<td>" . $row['LastName'] . "</td>";
+        echo "</tr>";
+        }
+        echo "</table>";
 
-      $query = "call csgamez.createNewUser('$FName','$LName','$Username','$Password','$Email','$ClanSelect');";
-      $sth = $pdo->prepare($query);
+        mysqli_close($con);
 
-      $sth->execute();
+      }
+
     }
     ?>
+
+
+    <script>
+    function funOption() {
+      var value = document.getElementById("SearchOption").value;
+
+
+      if (value == "Clan") {
+        document.getElementById("Input").style.display = "none";
+        document.getElementById("ClanSelect").style.display = "block";
+      }
+      else{
+        document.getElementById("Input").style.display = "block";
+        document.getElementById("ClanSelect").style.display = "none";
+
+      }
+
+    }
+
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
