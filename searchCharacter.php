@@ -1,3 +1,4 @@
+
 <?php
 
   //create connection to MySQL database **CHANGE**
@@ -85,8 +86,6 @@
             }
         }
     </style>
-
-    <!-- Title -->
     <body>
         <header>
             <div class="container">
@@ -101,14 +100,12 @@
                     </div>
             </div>
         </header>
-
-        <!-- sub title -->
         <section id="filename">
             <div class="contatiner">
                 <h2>Character Search</h2>
             </div>
         </section>
-    <form method="POST" action="UserEntryForm.php">
+    <form method="POST" action="">
       <fieldset>
 
 
@@ -118,12 +115,11 @@
           <label class="input-group-text" for="SearchOption">Search By</label>
         </div>
 
-        <select class="custom-select" name="SearchOption" id="SearchOption">
+        <select class="custom-select" name="SearchOption" id="SearchOption" onchange="funOption()">
           <option selected value = null>Choose...</option>
-          <option value=characterName>Character Name</option>
-          <option value=LastName>Character Type</option>
-          <option value=Weapon>Weapon</option>
-          <option value=Armour>Armour</option>
+          <option value=CharacterName>Character Name</option>
+          <option value=User>User</option>
+
         </select>
       </div><br>
 
@@ -135,32 +131,90 @@
         <input type="text" name="Input" class="form-control">
       </div><br>
 
+      </div><br>
+
+
 
 
 
       <!-- Submit Button -->
     <!--  <button type="submit" class="btn btn-primary">Submit</button> -->
-    <form method="post" action=''>
+    <form method="post">
 
       <input type="submit" name="Search" id="Search" value="Search" class="btn btn-primary" /><br/>
 
     </form>
     <?php
     if (isset($_POST['Search'])){
-      $SearchBy = $_POST['SearchOption'];
-      $Input =$_POST['Input'];
+      $output = NULL;
+      //connect to db
+      $mysql = NEW MySQLi("localhost","root","Ryanwilbur1","csgamez");
 
+      //only allows letters
+      $value = $mysql->real_escape_string($_POST['SearchOption']);
+      $Input = $mysql->real_escape_string($_POST['Input']);
 
+      if ($value == "CharacterName") {
+        $query = "call csgamez.searchCharactersByName('$Input');";
 
+      }
+      elseif ($value == "User") {
+        $query = "call csgamez.searchCharactersByUser('$Input');";
 
-      echo "Created : $FName,$LName,$Username,$Password,$Email,$ClanSelect";
+      }
+      else{
+        echo "Please select search option!";
+        die;
+      }
+      $queryResult = $mysql->query($query);
 
-      $query = "call csgamez.createNewUser('$FName','$LName','$Username','$Password','$Email','$ClanSelect');";
-      $sth = $pdo->prepare($query);
+      if($queryResult->num_rows > 0){
+        while($rows=$queryResult->fetch_assoc()){
+          $UserInfo_Username = $rows['UserInfo_Username'];
+          $UserCharacter_Name = $rows['UserCharacter_Name'];
+          $CharType_Name = $rows['CharType_Name'];
+          $Stats_HP = $rows['Stats_HP'];
+          $Stats_Strength = $rows['Stats_Strength'];
+          $Stats_Stamina = $rows['Stats_Stamina'];
+          $Stats_Lvl = $rows['Stats_Lvl'];
 
-      $sth->execute();
+          $output .= "Username: $UserInfo_Username<br />
+            Character Name: $UserCharacter_Name<br />
+            Character Type: $CharType_Name<br />
+            HP Level: $Stats_HP<br />
+            Strength Level: $Stats_Strength<br />
+            Stamina Level: $Stats_Stamina<br />
+            Total Level: $Stats_Stamina<br />
+             <br />";
+        }
+      }
+      else{
+        $output =  "No Results";
+      }
+
+      echo $output;
     }
     ?>
+
+
+    <script>
+    function funOption() {
+      var value = document.getElementById("SearchOption").value;
+
+
+      if (value == "Clan") {
+        document.getElementById("Input").style.display = "none";
+        document.getElementById("ClanSelect").style.display = "block";
+      }
+      else{
+        document.getElementById("Input").style.display = "block";
+        document.getElementById("ClanSelect").style.display = "none";
+
+      }
+
+    }
+
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -168,9 +222,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <!-- footer -->
-    <footer>
-        <p>Made with love by Jayden Macdonald, Ryan Wilbur, Dorukhan Calışkan, and Dylan Roberts</p>
-    </footer>
   </body>
 </html>
