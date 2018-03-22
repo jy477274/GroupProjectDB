@@ -1,3 +1,38 @@
+<?php
+
+  //create connection to MySQL database **CHANGE**
+  include 'testsql/pdo.php';
+  $pdo = new PDO($dsn, $user, $pass, $opt);
+
+  //check connection
+  if(mysqli_connect_errno()){
+    //connection failed
+    echo 'Failed to connect to MySQL '. mysqli_connect_errno();
+  }
+
+  //check for Submit
+  $n = 100;
+  if(isset($_POST['submit'])){
+    //get form database
+    $Username=$_POST['Username'];
+    $CharName=$_POST['CharName'];
+    $CharType = $_POST['CharTypeSelect'];
+    $Weapon = $_POST['Weapon'];
+    $Armour = $_POST['Armour'];
+
+
+
+    if(mysqli_query($conn, $query)){
+      header('Location: '.'http://localhost/PHP/CharacterCreation.php'.'');
+    }
+    else {
+      echo 'ERROR: '.mysqli_error($conn);
+    }
+  }
+
+ ?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,9 +42,54 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style/style.css">
     <head/>
-    
+
+    <!-- Custom CSS -->
+    <style>
+        header{
+            background:  #3b5998;
+            color: #ffffff;
+            padding-left: 0px;
+            padding-bottom: 30px;
+            min-height: 70px;
+            border-bottom: #8b9dc3 3px soli
+            width; 100%;
+            text-align: left;
+        }
+        body{
+            front 15px/1.5 Arial, Helvetica,sans-serif;
+            padding-top: 0px;
+            padding-left: 0px;
+
+            background-color: #dfe3ee;
+
+        }
+        footer{
+            position:fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            hight:30px;
+            color: #ffffff;
+            background-color:#3b5998;
+            border-top:  #8b9dc3 3px solid;
+            text-align: center;
+        }
+        .container{
+            padding-top: 20px;
+        }
+        h1{
+            margin: 0 auto;
+            text-align: left;
+            text-align: start;
+            padding-bottom: 20px;
+        }
+        h2{
+            padding-top: 70px
+        }
+
+    </style>
+
     <!-- Title -->
     <body>
         <header>
@@ -33,23 +113,30 @@
                 <h2>Character Creation</h2>
             </div>
         </section>
-    <form>
+    <form method="POST" action="CharacterCreation.php">
       <fieldset>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"  id="Username">Username</span>
+          </div>
+          <input type="text" name="Username" class="form-control">
+        </div><br>
 
 
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text" id="CharName">Character Name</span>
           </div>
-          <input type="text" class="form-control">
+          <input type="text" name="CharName" class="form-control">
         </div><br>
 
         <!-- Character Type -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="CharTypeSelect">Character Type</label>
+            <label class="input-group-text"  for="CharTypeSelect">Character Type</label>
           </div>
-          <select class="custom-select" id="CharTypeSelect">
+          <select class="custom-select" name="CharTypeSelect" id="CharTypeSelect">
             <option selected>Choose...</option>
             <option value="Mage">Mage</option>
             <option value="Fighter">Fighter</option>
@@ -63,33 +150,57 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="Weapon">Weapon</label>
           </div>
-          <select class="custom-select" id="Weapon">
+          <select class="custom-select" name="Weapon" id="Weapon">
             <option selected>Choose...</option>
             <option value="Sword">Sword</option>
             <option value="Bow">Bow</option>
             <option value="Staff">Staff</option>
-            <option value="Knives">Knives</option>
+            <option value="Knive(s)">Knive(s)</option>
           </select><br>
         </div>
 
         <!-- Armour -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="Armour">Armour</label>
+            <label class="input-group-text"  for="Armour">Armour</label>
           </div>
-          <select class="custom-select" id="Armour">
+          <select class="custom-select" name="Armour" id="Armour">
             <option selected>Choose...</option>
-            <option value="Chain Mail">Chain Mail</option>
-            <option value="Robe">Robe</option>
+            <option value="Chainmail">Chainmail</option>
+            <option value="Robes">Robes</option>
             <option value="Leather">Leather</option>
             <option value="Cloak">Cloak</option>
           </select><br>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <form method="post" action=''>
+          <input type="submit" name="create" id="test" value="Create" class="btn btn-primary" /><br/>
 
       </fieldset>
     </form>
+
+
+
+    <?php
+    if (isset($_POST['create'])){
+      
+      $Username=$_POST['Username'];
+      $CharName=$_POST['CharName'];
+      $CharType = $_POST['CharTypeSelect'];
+      $Weapon = $_POST['Weapon'];
+      $Armour = $_POST['Armour'];
+
+
+
+      echo "Created : $CharName,$CharType,$Weapon,$Armour";
+
+      $query = "call csgamez.createNewCharacter('$Username','$CharName','$CharType','$Weapon','$Armour');";
+      $sth = $pdo->prepare($query);
+
+      $sth->execute();
+    }
+    ?>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
