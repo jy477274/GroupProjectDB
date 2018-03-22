@@ -120,7 +120,7 @@ CREATE PROCEDURE csgamez.searchCharactersByUser
     
     SELECT UserInfo_ID INTO UserID FROM UserInfo WHERE UserInfo_Username=Username;
         
-	SELECT UI.UserInfo_Username,UI.UserCharacter_Name, UI.CharType_Name, S.Stats_HP HP,S.Stats_Strength Strength, S.Stats_Stamina Stamina, S.Stats_Lvl Lvl
+	SELECT UI.UserInfo_Username,UI.UserCharacter_Name, UI.CharType_Name, S.Stats_HP,S.Stats_Strength, S.Stats_Stamina, S.Stats_Lvl
     FROM (SELECT UI.UserInfo_Username,UI.UserCharacter_Name, C.CharType_Name,UI.Stats_ID
 		FROM (SELECT UserInfo_Username, UC.*
 			FROM (SELECT UI.UserInfo_Username, UC.UserCharacter_ID
