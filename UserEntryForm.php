@@ -60,19 +60,20 @@
             front 15px/1.5 Arial, Helvetica,sans-serif;
             padding-top: 0px;
             padding-left: 0px;
-
             background-color: #dfe3ee;
-
+            min-height: 400px;
+            margin-bottom: 100px;
+            clear:both;
         }
         footer{
             position:fixed;
             bottom: 0px;
-            left: 0px;
             width: 100%;
-            hight:30px;
+            hight:5px;
+            align-items: center;
             color: #ffffff;
             background-color:#3b5998;
-            border-top:  #8b9dc3 3px solid;
+            border-top:  #8b9dc3 1px solid;
             text-align: center;
         }
         .container{
@@ -87,6 +88,10 @@
         h2{
             padding-top: 70px;
         }
+        p{
+            padding-top: 10px;
+        }
+
 
     </style>
 
