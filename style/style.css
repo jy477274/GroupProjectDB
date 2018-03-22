@@ -4,7 +4,7 @@
         padding-left: 0px;
         padding-bottom: 30px;
         min-height: 70px;
-        border-bottom: #8b9dc3 3px soli
+        border-bottom: #8b9dc3 3px solid;
         width; 100%;
         text-align: left;
     }
@@ -21,12 +21,15 @@
         position:fixed;
         bottom: 0px;
         width: 100%;
-        hight:5px;
+        height:40px;
         align-items: center;
         color: #ffffff;
         background-color:#3b5998;
-        border-top:  #8b9dc3 1px solid;
+        border-top:  #8b9dc3 3px solid;
         text-align: center;
+    }
+    .createButton{
+        padding-bottom: 30px;
     }
     .container{
         padding-top: 20px;
@@ -39,7 +42,4 @@
     }
     h2{
         padding-top: 70px;
-    }
-    p{
-        padding-top: 10px;
     }
