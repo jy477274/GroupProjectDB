@@ -140,7 +140,7 @@
             HP Level: $Stats_HP<br />
             Strength Level: $Stats_Strength<br />
             Stamina Level: $Stats_Stamina<br />
-            Total Level: $Stats_Stamina<br />
+            Total Level: $Stats_Lvl<br />
              <br />";
         }
       }
