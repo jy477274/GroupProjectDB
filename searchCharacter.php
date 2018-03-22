@@ -60,12 +60,11 @@
 
             }
             footer{
-                position:absolute;
-                bottom: 0;
+                position:fixed;
+                bottom: 0px;
+                left: 0px;
                 width: 100%;
-                hight:60px;
-                padding:20px;
-                margin-top: 20px;
+                hight:30px;
                 color: #ffffff;
                 background-color:#3b5998;
                 border-top:  #8b9dc3 3px solid;
