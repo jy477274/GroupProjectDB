@@ -43,57 +43,10 @@
     <!-- Bootstrap CSS -->
     <!--<link href-"css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/style.css">
 
     <!-- Custom CSS -->
-    <style>
-        header{
-            background:  #3b5998;
-            color: #ffffff;
-            padding-left: 0px;
-            padding-bottom: 30px;
-            min-height: 70px;
-            border-bottom: #8b9dc3 3px soli
-            width; 100%;
-            text-align: left;
-        }
-        body{
-            front 15px/1.5 Arial, Helvetica,sans-serif;
-            padding-top: 0px;
-            padding-left: 0px;
-            background-color: #dfe3ee;
-            min-height: 400px;
-            margin-bottom: 100px;
-            clear:both;
-        }
-        footer{
-            position:fixed;
-            bottom: 0px;
-            width: 100%;
-            hight:5px;
-            align-items: center;
-            color: #ffffff;
-            background-color:#3b5998;
-            border-top:  #8b9dc3 1px solid;
-            text-align: center;
-        }
-        .container{
-            padding-top: 20px;
-        }
-        h1{
-            margin: 0 auto;
-            text-align: left;
-            text-align: start;
-            padding-bottom: 20px;
-        }
-        h2{
-            padding-top: 70px;
-        }
-        p{
-            padding-top: 10px;
-        }
 
-
-    </style>
 
     <!-- Title -->
     <body>
