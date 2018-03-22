@@ -105,7 +105,7 @@
                 <h2>User Search</h2>
             </div>
         </section>
-    <form method="POST" action="UserEntryForm.php">
+    <form method="POST" action="">
       <fieldset>
 
 
@@ -153,56 +153,63 @@
 
       <!-- Submit Button -->
     <!--  <button type="submit" class="btn btn-primary">Submit</button> -->
-    <form method="post" action=''>
+    <form method="post">
 
       <input type="submit" name="Search" id="Search" value="Search" class="btn btn-primary" /><br/>
 
     </form>
     <?php
     if (isset($_POST['Search'])){
-      $value = $_POST['SearchOption'];
-      $Input =$_POST['Input'];
-      $Clanname =$_POST['ClanSelect'];
+      $output = NULL;
+      //connect to db
+      $mysql = NEW MySQLi("localhost","root","Ryanwilbur1","csgamez");
+
+      //only allows letters
+      $value = $mysql->real_escape_string($_POST['SearchOption']);
+      $Input = $mysql->real_escape_string($_POST['Input']);
+      $Clanname = $mysql->real_escape_string($_POST['ClanSelect']);
 
       if ($value == "FirstName") {
         $query = "call csgamez.searchUserByFirstName('$Input');";
-        $sth = $pdo->prepare($query);
-        $sth->execute();
+
       }
       elseif ($value == "LastName") {
         $query = "call csgamez.searchUserByLastName('$Input');";
-        $sth = $pdo->prepare($query);
-        $sth->execute();
+
       }
       elseif ($value == "Username") {
         $query = "call csgamez.searchUserByUsername('$Input');";
-        $sth = $pdo->prepare($query);
-        $sth->execute();
+
       }
       else{
         $query = "call csgamez.searchUsersByClan('$Clanname');";
 
-        mysqli_query($pdo,$query);
+      }
+      $queryResult = $mysql->query($query);
 
-        echo "<table border='1'>
-        <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        </tr>";
+      if($queryResult->num_rows > 0){
+        while($rows=$queryResult->fetch_assoc()){
+          $UserInfo_ID = $rows['UserInfo_ID'];
+          $UserInfo_FName = $rows['UserInfo_FName'];
+          $UserInfo_LName = $rows['UserInfo_LName'];
+          $UserInfo_Username = $rows['UserInfo_Username'];
+          $UserInfo_Email = $rows['UserInfo_Email'];
+          $Clan_Name = $rows['Clan_Name'];
 
-        while($row = mysqli_fetch_array($query))
-        {
-        echo "<tr>";
-        echo "<td>" . $row['FirstName'] . "</td>";
-        echo "<td>" . $row['LastName'] . "</td>";
-        echo "</tr>";
+          $output .= "UserID: $UserInfo_ID<br />
+            First Name: $UserInfo_FName<br />
+            Last Name: $UserInfo_LName<br />
+            Username: $UserInfo_Username<br />
+            Email: $UserInfo_Email<br />
+            Clan: $Clan_Name<br />
+             <br />";
         }
-        echo "</table>";
-
-        mysqli_close($con);
-
+      }
+      else{
+        $output =  "No Results";
       }
 
+      echo $output;
     }
     ?>
 
@@ -231,8 +238,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <footer>
-        <p>Made with love by Jayden Macdonald, Ryan Wilbur, Dorukhan Calışkan, and Dylan Roberts</p>
-    </footer>
+
   </body>
 </html>
