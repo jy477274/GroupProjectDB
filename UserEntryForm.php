@@ -131,11 +131,13 @@
 
           <!-- Submit Button -->
         <!--  <button type="submit" class="btn btn-primary">Submit</button> -->
-        <form method="post" action=''>
+        <section id="createButton">
+            <form method="post" action=''>
+             <input type="submit" name="create" id="test" value="Create" class="btn btn-primary" /><br/>
+            </form>
+            <p>&#32;</p>
+        </section>
 
-          <input type="submit" name="create" id="test" value="Create" class="btn btn-primary" /><br/>
-
-        </form>
         <?php
         if (isset($_POST['create'])){
 
