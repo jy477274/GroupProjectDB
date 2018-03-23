@@ -1,3 +1,5 @@
+/*
+*/
 USE csgamez;
 
 #creating a new user and adding it to the database (Working)
@@ -45,7 +47,7 @@ CREATE PROCEDURE csgamez.createNewCharacter
     SELECT (COALESCE(MAX(CharacterWeapon_ID), 0)+1) INTO CharWeaponID FROM CharacterWeapon;
     SELECT (COALESCE(MAX(UserChar_ID), 0)+1) INTO UserCharID FROM UserChar;
     
-    INSERT INTO Stats VALUES(StatsID,1,1,1,1);
+    INSERT INTO Stats VALUES(StatsID,1,1,1,3);
     INSERT INTO UserCharacter VALUES(CharID,CharName,StatsID,CharTypeID);
     INSERT INTO CharacterWeapon VALUES(CharWeaponID,CharID,WeaponID);
     INSERT INTO CharacterArmour VALUES(CharArmourID,CharID,ArmourID);
@@ -153,6 +155,76 @@ CREATE PROCEDURE csgamez.searchCharactersByName
 	ON(UI.UserInfo_ID=U.UserInfo_ID);
 
 END;//
+
+
+
+#delete user based on username (working)
+Delimiter // 
+CREATE PROCEDURE csgamez.deleteUserByUsername
+	(IN Username VARCHAR(255))
+    BEGIN
+
+	DECLARE UserID INT;
+    
+    SELECT userinfo_ID INTO UserID
+		FROM userinfo
+		WHERE UserInfo_Username=Username;
+    
+    
+    #all chars owened to one user
+    DROP TABLE  IF EXISTS usercharacterID ;
+    CREATE TEMPORARY TABLE userCharacterID AS 
+		(SELECT UserCharacter_ID 
+			FROM userinfo ui join userchar uc
+            ON (ui.UserInfo_ID=uc.UserInfo_ID)
+            WHERE(ui.UserInfo_Username=Username));
+    
+    
+    #all statId's for those characters
+    DROP TABLE  IF EXISTS StatsID ;
+     CREATE TEMPORARY TABLE StatsID AS 
+		(SELECT uc.Stats_ID 
+			FROM usercharacter uc join stats s
+            ON (uc.Stats_ID=s.Stats_ID)
+            WHERE uc.UserCharacter_ID in (SELECT * FROM userCharacterID));
+            
+	
+        
+	DELETE FROM characterarmour
+		WHERE CharacterArmour.UserCharacter_ID in (SELECT * FROM userCharacterID);
+        
+	DELETE FROM characterweapon
+		WHERE CharacterWeapon.UserCharacter_ID in (SELECT * FROM userCharacterID);
+     
+     
+	DELETE FROM userchar
+		WHERE UserChar.UserCharacter_ID in (SELECT * FROM userCharacterID);
+        
+        
+     DELETE FROM usercharacter
+		WHERE UserCharacter.UserCharacter_ID in (SELECT * FROM userCharacterID);
+    
+    DELETE FROM stats
+		WHERE stats.stats_ID in (SELECT * FROM statsID);
+    
+    DELETE FROM userinfo
+		WHERE UserInfo_ID = UserID;
+	
+
+END;//
+
+
+
+
+ 
+	
+
+
+
+
+
+
+
 
 
 
