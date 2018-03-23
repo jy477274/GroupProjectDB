@@ -183,7 +183,7 @@
 
     <?php
     if (isset($_POST['create'])){
-      
+
       $Username=$_POST['Username'];
       $CharName=$_POST['CharName'];
       $CharType = $_POST['CharTypeSelect'];
