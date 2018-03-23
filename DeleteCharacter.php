@@ -97,7 +97,7 @@
         <!-- sub title -->
         <section id="filename">
             <div class="contatiner">
-                <h2>Delete User By Username</h2>
+                <h2>Delete Character By Username and Character Name</h2>
             </div>
         </section>
         <form method="POST" action="DeleteUser.php">
