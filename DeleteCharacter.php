@@ -13,7 +13,6 @@
   if(isset($_POST['submit'])){
     //get form database
     $Username = $_POST['Username'];
-    $CharName = $_POST['CharName'];
     if(mysqli_query($conn, $query)){
       header('Location: '.'http://localhost/PHP/CharacterCreation.php'.'');
     }
@@ -111,14 +110,6 @@
             <input type="text" name="Username" class="form-control">
           </div><br>
 
-          <p></p>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"  id="CharName">Character Name</span>
-            </div>
-            <input type="text" name="CharName" class="form-control">
-          </div><br>
 
           <!-- Submit Button -->
         <!--  <button type="submit" class="btn btn-primary">Submit</button> -->
@@ -130,9 +121,8 @@
         <?php
           if (isset($_POST['Delete'])){
           $Username =$_POST['Username'];
-          $CharName =$_POST['CharName'];
-          echo "Deleted : $Username's character $CharName"
-          $query = "call csgamez.deleteCharacterByname('$Username','$CharName');";
+          echo "Deleted : $Username's character"
+          $query = "call csgamez.deleteCharacterByname('$Username');";
           $sth = $pdo->prepare($query);
           $sth->execute();
         }
