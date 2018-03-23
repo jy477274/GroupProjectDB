@@ -214,7 +214,47 @@ CREATE PROCEDURE csgamez.deleteUserByUsername
 END;//
 
 
+#delete character name (working)
+Delimiter // 
+CREATE PROCEDURE csgamez.deleteCharacterByname
+	(IN Username VARCHAR(255))
+    BEGIN
 
+	DECLARE userCharacterID INT;
+    DECLARE StatsID INT;
+    
+    SELECT uc.userCharacter_ID INTO userCharacterID
+		FROM usercharacter uc join userchar u
+        ON(uc.UserCharacter_ID=u.UserCharacter_ID)
+		WHERE UserCharacter_Name=Username;
+        
+        
+	SELECT uc.Stats_ID INTO StatsID
+			FROM usercharacter uc join stats s
+            ON (uc.Stats_ID=s.Stats_ID)
+            WHERE uc.UserCharacter_ID = userCharacterID;
+    
+        
+	DELETE FROM characterarmour
+		WHERE CharacterArmour.UserCharacter_ID = userCharacterID;
+        
+	DELETE FROM characterweapon
+		WHERE CharacterWeapon.UserCharacter_ID = userCharacterID;
+     
+     
+	DELETE FROM userchar
+		WHERE UserChar.UserCharacter_ID = userCharacterID;
+        
+        
+     DELETE FROM usercharacter
+		WHERE UserCharacter.UserCharacter_ID = userCharacterID;
+    
+    DELETE FROM stats
+		WHERE stats.stats_ID  = StatsID;
+    
+	
+
+END;//
 
  
 	
