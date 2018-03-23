@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -33,11 +32,12 @@
 
         }
         footer{
-            position:fixed;
-            bottom: 0px;
-            left: 0px;
+            position:absolute;
+            bottom: 0;
             width: 100%;
-            hight:30px;
+            hight:60px;
+            padding:20px;
+            margin-top: 20px;
             color: #ffffff;
             background-color:#3b5998;
             border-top:  #8b9dc3 3px solid;
@@ -115,8 +115,41 @@
       </fieldset>
     </form>
 
+    <p></p>
 
+  <!-- update user password button -->
+  <form method="POST" action="UpdateUser.php">
+    <fieldset>
+    <button type="submit" class="btn btn-primary">Update User Password</button>
+    </fieldset>
+  </form>
 
+  <p></p>
+
+  <!-- update character name-->
+  <form method="POST" action="UpdateCharacter.php">
+    <fieldset>
+    <button type="submit" class="btn btn-primary">Update Character Name</button>
+    </fieldset>
+  </form>
+
+  <p></p>
+
+  <!-- delete user -->
+  <form method="POST" action="DeleteUser.php">
+    <fieldset>
+    <button type="submit" class="btn btn-primary">Delete User</button>
+    </fieldset>
+  </form>
+
+  <p></p>
+
+  <!-- delete character -->
+  <form method="POST" action="DeleteCharacter.php">
+    <fieldset>
+    <button type="submit" class="btn btn-primary">Delete Character</button>
+    </fieldset>
+  </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
