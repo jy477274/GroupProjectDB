@@ -132,7 +132,7 @@
           $Username =$_POST['Username'];
           $CharName =$_POST['CharName'];
           echo "Deleted : $Username's character $CharName"
-          $query = "call csgamez.deleteCharacter('$Username','$CharName');";
+          $query = "call csgamez.deleteCharacterByname('$Username','$CharName');";
           $sth = $pdo->prepare($query);
           $sth->execute();
         }
