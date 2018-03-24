@@ -142,7 +142,7 @@
           $Username =$_POST['Username'];
           $Password =$_POST['Password'];
           $NewPassword =$_POST['NewPassword'];
-          echo "Changed $Username's password successfully"
+          echo "Changed $Username's password successfully";
           $query = "call csgamez.updateUserPassword('$Username','$Password','$NewPassword');";
           $sth = $pdo->prepare($query);
           $sth->execute();

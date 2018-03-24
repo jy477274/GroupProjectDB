@@ -190,7 +190,7 @@
 
 
 
-          echo "Created : $FName,$LName,$Username,$Password,$Email,$ClanSelect";
+          echo "Created : $Username";
 
           $query = "call csgamez.createNewUser('$FName','$LName','$Username','$Password','$Email','$ClanSelect');";
           $sth = $pdo->prepare($query);

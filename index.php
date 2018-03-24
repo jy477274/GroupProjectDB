@@ -65,9 +65,7 @@
                         <div id="branding">
                                 <h1>DalCS Gamez Database</h1>
                                 <form method="POST" action="index.php">
-                                    <fieldset>
-                                        <button type="submit" class="btn btn-primary">Back</button>
-                                    </fieldset>
+                                    
                                 </form>
 
                         </div>

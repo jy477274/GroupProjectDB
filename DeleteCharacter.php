@@ -121,7 +121,7 @@
         <?php
           if (isset($_POST['Delete'])){
           $Username =$_POST['Username'];
-          echo "Deleted : $Username's character"
+          echo "Deleted : $Username's character";
           $query = "call csgamez.deleteCharacterByname('$Username');";
           $sth = $pdo->prepare($query);
           $sth->execute();

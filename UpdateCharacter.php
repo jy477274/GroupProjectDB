@@ -1,6 +1,6 @@
 <?php
   //create connection to MySQL database **CHANGE**
-  
+
   include 'testsql/pdo.php';
   $pdo = new PDO($dsn, $user, $pass, $opt);
   //check connection
@@ -142,7 +142,7 @@
           $Username =$_POST['Username'];
           $CharName =$_POST['CharName'];
           $NewCharName =$_POST['NewCharName'];
-          echo "Changed the name of $Username's character to $NewCharName"
+          echo "Changed the name of $Username's character to $NewCharName";
           $query = "call csgamez.updateCharacterName('$Username','$CharName','$NewCharName');";
           $sth = $pdo->prepare($query);
           $sth->execute();

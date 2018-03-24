@@ -120,7 +120,7 @@
         <?php
           if (isset($_POST['Delete'])){
           $Username =$_POST['Username'];
-          echo "Deleted : $Username"
+          echo "Deleted : $Username";
           $query = "call csgamez.deleteUserByUsername('$Username');";
           $sth = $pdo->prepare($query);
           $sth->execute();
