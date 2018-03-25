@@ -15,12 +15,7 @@
     $Username = $_POST['Username'];
     $Password = $_POST['Password'];
     $NewPassword = $_POST['NewPassword'];
-    if(mysqli_query($conn, $query)){
-      header('Location: '.'http://localhost/PHP/CharacterCreation.php'.'');
-    }
-    else {
-      echo 'ERROR: '.mysqli_error($conn);
-    }
+
   }
  ?>
 
@@ -135,10 +130,11 @@
         <form method="post" action=''>
 
           <input type="submit" name="update" id="update" value="Update" class="btn btn-primary" /><br/>
-
+        </fieldset>
+        </form>
 
         <?php
-          if (isset($_POST['Update'])){
+          if (isset($_POST['update'])){
           $Username =$_POST['Username'];
           $Password =$_POST['Password'];
           $NewPassword =$_POST['NewPassword'];

@@ -12,15 +12,9 @@
 
   if(isset($_POST['submit'])){
     //get form database
-    $Username = $_POST['Username'];
     $CharName = $_POST['CharName'];
     $NewCharName = $_POST['NewCharName'];
-    if(mysqli_query($conn, $query)){
-      header('Location: '.'http://localhost/PHP/CharacterCreation.php'.'');
-    }
-    else {
-      echo 'ERROR: '.mysqli_error($conn);
-    }
+
   }
  ?>
 
@@ -105,14 +99,7 @@
           <fieldset>
             <p></p>
           <!-- Username -->
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"  id="Username">Username</span>
-            </div>
-            <input type="text" name="Username" class="form-control">
-          </div><br>
 
-          <p></p>
 
           <div class="input-group">
             <div class="input-group-prepend">
@@ -135,15 +122,15 @@
         <form method="post" action=''>
 
           <input type="submit" name="update" id="update" value="Update" class="btn btn-primary" /><br/>
-
+        </fieldset>
+        </form>
 
         <?php
-          if (isset($_POST['Update'])){
-          $Username =$_POST['Username'];
+          if (isset($_POST['update'])){
           $CharName =$_POST['CharName'];
           $NewCharName =$_POST['NewCharName'];
-          echo "Changed the name of $Username's character to $NewCharName";
-          $query = "call csgamez.updateCharacterName('$Username','$CharName','$NewCharName');";
+          echo "Changed the name of $CharName to $NewCharName";
+          $query = "call csgamez.updateCharacterName('$CharName','$NewCharName');";
           $sth = $pdo->prepare($query);
           $sth->execute();
         }

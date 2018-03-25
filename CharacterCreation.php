@@ -192,11 +192,10 @@
 
 
 
-      echo "Created : $CharName,$CharType,$Weapon,$Armour";
+      echo "Created : $CharName";
 
       $query = "call csgamez.createNewCharacter('$Username','$CharName','$CharType','$Weapon','$Armour');";
       $sth = $pdo->prepare($query);
-
       $sth->execute();
     }
     ?>

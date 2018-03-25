@@ -13,12 +13,7 @@
   if(isset($_POST['submit'])){
     //get form database
     $Username = $_POST['Username'];
-    if(mysqli_query($conn, $query)){
-      header('Location: '.'http://localhost/PHP/CharacterCreation.php'.'');
-    }
-    else {
-      echo 'ERROR: '.mysqli_error($conn);
-    }
+
   }
  ?>
 
@@ -114,11 +109,12 @@
         <!--  <button type="submit" class="btn btn-primary">Submit</button> -->
         <form method="post" action=''>
 
-          <input type="submit" name="delete" id="delete" value="Delete" class="btn btn-primary" /><br/>
-
+          <input type="submit" name="submit" id="test" value="Submit" class="btn btn-primary" /><br/>
+        </feildset>
+        </form>
 
         <?php
-          if (isset($_POST['Delete'])){
+          if (isset($_POST['submit'])){
           $Username =$_POST['Username'];
           echo "Deleted : $Username";
           $query = "call csgamez.deleteUserByUsername('$Username');";

@@ -258,14 +258,32 @@ END;//
 
  
 	
+Delimiter // 
+CREATE PROCEDURE csgamez.updateUserPassword
+	(IN Username VARCHAR(255),IN oldPass VARCHAR(255),IN newPass VARCHAR(255))
+	    BEGIN
+        
+        UPDATE UserInfo
+			SET UserInfo_Pass=newPass
+			WHERE UserInfo_Username=Username
+				AND UserInfo_Pass=oldPass;
+    
+        
+        END;//
 
 
 
-
-
-
-
-
+Delimiter // 
+CREATE PROCEDURE csgamez.updateCharacterName
+	(IN oldChar VARCHAR(255),IN newChar VARCHAR(255))
+	    BEGIN
+        
+        UPDATE UserCharacter
+			SET UserCharacter_Name=newChar
+			WHERE UserCharacter_Name=oldChar;
+    
+        
+        END;//
 
 
 

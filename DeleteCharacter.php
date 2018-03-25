@@ -13,12 +13,7 @@
   if(isset($_POST['submit'])){
     //get form database
     $Username = $_POST['Username'];
-    if(mysqli_query($conn, $query)){
-      header('Location: '.'http://localhost/PHP/CharacterCreation.php'.'');
-    }
-    else {
-      echo 'ERROR: '.mysqli_error($conn);
-    }
+
   }
  ?>
 
@@ -96,16 +91,16 @@
         <!-- sub title -->
         <section id="filename">
             <div class="contatiner">
-                <h2>Delete Character By Username and Character Name</h2>
+                <h2>Delete Character Character Name</h2>
             </div>
         </section>
-        <form method="POST" action="DeleteUser.php">
+        <form method="POST" action="DeleteCharacter.php">
           <fieldset>
             <p></p>
           <!-- Username -->
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text"  id="Username">Username</span>
+              <span class="input-group-text"  id="Username">Character Name</span>
             </div>
             <input type="text" name="Username" class="form-control">
           </div><br>
@@ -115,13 +110,14 @@
         <!--  <button type="submit" class="btn btn-primary">Submit</button> -->
         <form method="post" action=''>
 
-          <input type="submit" name="delete" id="delete" value="Delete" class="btn btn-primary" /><br/>
-
+          <input type="submit" name="submit" id="test" value="Submit" class="btn btn-primary" /><br/>
+        </fieldset>
+        </form>
 
         <?php
-          if (isset($_POST['Delete'])){
+          if (isset($_POST['submit'])){
           $Username =$_POST['Username'];
-          echo "Deleted : $Username's character";
+          echo "Deleted : $Username ";
           $query = "call csgamez.deleteCharacterByname('$Username');";
           $sth = $pdo->prepare($query);
           $sth->execute();

@@ -21,8 +21,6 @@
     $Email = $_POST['Email'];
     $ClanSelect = $_POST['ClanSelect'];
 
-
-
     if(mysqli_query($conn, $query)){
       header('Location: '.'http://localhost/PHP/CharacterCreation.php'.'');
     }
