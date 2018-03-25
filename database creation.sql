@@ -109,7 +109,7 @@ INSERT INTO Weapon VALUES(2,'Bow',5);
 INSERT INTO Weapon VALUES(3,'Staff',8);
 INSERT INTO Weapon VALUES(4,'Knife(s)',3);
 
-INSERT INTO Armour VALUES(1,'Chain Mail','Bow',22);
+INSERT INTO Armour VALUES(1,'Chainmail','Bow',22);
 INSERT INTO Armour VALUES(2,'Robes','Sword',13);
 INSERT INTO Armour VALUES(3,'Leather','Knife(s)',10);
 INSERT INTO Armour VALUES(4,'Cloak','Staff',5);
